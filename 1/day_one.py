@@ -6,6 +6,7 @@ print(list1[-1][1])
 del list1[-1]
 print(list1)
 del list1
+
 print("-------------------------")
 list1 = [1,2,3,'a','b',[4,'c']]
 list1.insert(0,"first")
