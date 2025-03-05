@@ -1,7 +1,7 @@
 from  tinydb import TinyDB,Query
 
 #
-with open("./day_4_demo.csv") as f:
+with open("basic_4_demo.csv") as f:
     file_data = f.readlines()
     print(file_data)
 

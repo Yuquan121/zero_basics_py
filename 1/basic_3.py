@@ -2,7 +2,7 @@ import pprint as pp
 from distutils.command.clean import clean
 
 #读取文件
-with open("./day_3_demo.txt") as f:
+with open("basic_3_demo.txt") as f:
     # file_contents_read = f.read()
     file_contents = f.readlines()
     # pp.pprint(file_contents)
