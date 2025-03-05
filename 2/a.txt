@@ -1,0 +1,1 @@
+Python 3.11 is up to 10-60% faster than Python 3.10. On average, we measured a 1.25x speedup on the standard benchmark suite. See Faster CPython for details.
