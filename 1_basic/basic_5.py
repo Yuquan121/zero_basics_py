@@ -26,7 +26,7 @@ match http_response_status:
 number = 1
 while number <= 3:
     print(f"number is {number}")
-    # number_temp = number + 1
+    # number_temp = number + 1_basic
     # number = number_temp
     number += 1
 
@@ -34,9 +34,9 @@ print(number)
 #%%
 number = 1
 while number <= 3:
-    # list1[1]   # error
+    # list1[1_basic]   # error
     print(f"number is {number}")
-    # number_temp = number + 1
+    # number_temp = number + 1_basic
     # number = number_temp
     number += 1
 

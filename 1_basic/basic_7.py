@@ -2,7 +2,7 @@ import os
 import pathlib as plib
 from collections import defaultdict
 
-#1.请使用格式化输出功能，将上述字符进行格式转换，输出格式为：智能助手为你报时，当前时间是2024年5月20日13点14分0秒
+#1_basic.请使用格式化输出功能，将上述字符进行格式转换，输出格式为：智能助手为你报时，当前时间是2024年5月20日13点14分0秒
 
 date = "2024-05-20 13:14:00"
 year, month, day, hour, minute, second = map(int, date.replace('-', ' ').replace(':', ' ').split())
@@ -11,9 +11,9 @@ print(f"智能助手为你报时，当前时间是{year}年{month}月{day}日{ho
 number = 123.4567
 print(f"{number:010.3f}")
 
-string = """Python 3.11 is up to 10-60% faster than Python 3.10. On average, we measured a 1.25x speedup on the standard benchmark suite. See Faster CPython for details.\n"""
+string = """Python 3.11 is up to 10-60% faster than Python 3.10. On average, we measured a 1_basic.25x speedup on the standard benchmark suite. See Faster CPython for details.\n"""
 
-path = plib.Path("./a.txt")
+path = plib.Path("a.txt")
 
 def write_a(filename):
     with open(filename, "w") as f:
@@ -28,8 +28,8 @@ else:
         print("The file is readable and writable.")
         write_a(path)
 print("--------------------------------")
-with open("./b.txt", "a+") as fb:
-    with open("./a.txt",'r') as fa:
+with open("b.txt", "a+") as fb:
+    with open("a.txt", 'r') as fa:
         fb.write(fa.read())
         fb.seek(0)
         print(fb.read())
@@ -61,7 +61,7 @@ def merge_files(root_dir, out_file) -> None:
                     out_file.write(input_file.read() + '\n')
 
 if __name__ == "__main__":
-    homework_dir = "./homework"
+    homework_dir = "homework"
     output_file = os.path.join(homework_dir, "homework.txt")
     merge_files(homework_dir, output_file)
 
