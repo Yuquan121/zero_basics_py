@@ -26,14 +26,14 @@ jobs:
 
       - name: Build .exe
         run: |
-          pyinstaller src/alien_invasion.py \
-            --onefile \
-            --noconsole \
-            --name "AlienInvasion" \
-            --add-data "images;images" \
-            --add-data "music;music" \
-            --hidden-import pygame._sdl2 \
-            --hidden-import pygame.mixer \
+          pyinstaller src/alien_invasion.py `
+            --onefile `
+            --noconsole `
+            --name "AlienInvasion" `
+            --add-data "images;images" `
+            --add-data "music;music" `
+            --hidden-import pygame._sdl2 `
+            --hidden-import pygame.mixer `
             --icon "images/ship.ico"
 
       - name: Upload Artifact
