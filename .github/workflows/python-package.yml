@@ -26,7 +26,7 @@ jobs:
 
       - name: Build .exe
         run: |
-          pyinstaller src/alien_invasion.py `
+          pyinstaller alien_invasion.py `
             --onefile `
             --noconsole `
             --name "AlienInvasion" `
