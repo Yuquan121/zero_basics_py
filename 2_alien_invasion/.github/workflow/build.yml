@@ -1,0 +1,41 @@
+name: Build Windows Exe
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ./2_alien_invasion  # 关键：指定工作目录为 my_game
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: Build .exe
+        run: |
+          pyinstaller src/alien_invasion.py \
+            --onefile \
+            --noconsole \
+            --name "AlienInvasion" \
+            --add-data "images;images" \
+            --add-data "music;music" \
+            --hidden-import pygame._sdl2 \
+            --hidden-import pygame.mixer \
+            --icon "images/ship.ico"
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AlienInvasion-Windows
+          path: 2_alien_invasion/dist/  # 注意路径指向 my_game/dist

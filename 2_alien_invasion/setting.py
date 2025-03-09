@@ -6,7 +6,7 @@ class Settings:
         self.screen_height = 800
         self.bg_color = (135, 206, 235)
         self.caption = 'Alien Invasion'
-        self.ship_speed_factor = 2
+
 
         # 状态栏配置
         self.status_bar_height = 40  # 状态栏高度
@@ -27,8 +27,20 @@ class Settings:
         self.alien_speed_factor = 1
         self.last_alien_time = 0
         self.alien_interval = 2000  # 生成间隔2秒
-        self.batch_size_range = (1, 3)  # 每批生成1-3个
+        self.batch_size_range = (1, 2)  # 每批生成1-3个
 
+        #飞船设置
         self.ship_1 = 'images/ship.bmp'
         self.ship_2 = 'images/ship2.png'
         self.ship_3 = 'images/ship3.png'
+        self.ship_speed_factor = 2
+
+        #外星炸弹设置
+        self.alien_bomb_speed_factor = 22
+        self.last_alien_bomb_time = 28000
+        self.alien_bomb_interval = 10000  # 生成间隔8秒
+        self.bomb_batch_size_range = (1, 2)  # 每批生成1-2个
+
+        #速度项链设置
+        self.speed_necklace_speed_factor = 1
+        self.increase_speed_factor = 1

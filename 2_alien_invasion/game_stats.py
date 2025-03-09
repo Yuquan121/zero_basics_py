@@ -11,6 +11,7 @@ class GameStats:
         self.ship = ai_game.ship
         self.ship_hp = 100  # 初始生命值
         self.coin = 0  # 初始得分
+        self.game_start_time = pygame.time.get_ticks()
         self._load_status_images()
 
     def draw_game_over(self):
@@ -20,7 +21,7 @@ class GameStats:
         self.screen.blit(overlay, (0, 0))
 
         # 弹窗矩形
-        popup_width, popup_height = 400, 200
+        popup_width, popup_height = 400, 300
         screen_rect = self.screen.get_rect()
         popup_rect = pygame.Rect(
             (screen_rect.centerx - popup_width // 2),  # 水平居中
@@ -38,11 +39,14 @@ class GameStats:
 
         # 第二行文字：Press R to start a new game
         font_small = pygame.font.Font(None, 36)
+        text3 = font_small.render(f"Final score: {self.coin}", True, (255, 0, 0))
+        text3_rect = text3.get_rect(center=(popup_rect.centerx, popup_rect.centery + 30))
         text2 = font_small.render("Press R to start a new game", True, (255, 0, 0))
-        text2_rect = text2.get_rect(center=(popup_rect.centerx, popup_rect.centery + 30))
+        text2_rect = text2.get_rect(center=(popup_rect.centerx, popup_rect.centery + 80))
         # 绘制文字
         self.screen.blit(text1, text1_rect)
         self.screen.blit(text2, text2_rect)
+        self.screen.blit(text3, text3_rect)
         pygame.display.flip()  # 确保弹窗内容更新
 
     def _load_status_images(self):
@@ -93,7 +97,7 @@ class GameStats:
         # 绘制时间（右侧）
         self._draw_status_item(
             image=self.time_image,
-            text=f"{pygame.time.get_ticks()//1000}s",
+            text=f"{(pygame.time.get_ticks() - self.game_start_time)//1000}s",
             x=self.settings.screen_width - x_padding,
             y_center=y_center,
             icon_text_spacing=icon_text_spacing,
@@ -146,5 +150,13 @@ class GameStats:
         """重制游戏设置"""
         self.ai_game.aliens.empty()
         self.ai_game.bullets.empty()
-        self.ship.reset_setting()
+        self.ai_game.speed_ring.empty()
+        self.ai_game.ship.reset_setting()
+        self.ship_hp = 100
+        self.coin = 0
+        # 新增游戏启动时间戳
+        self.game_start_time = pygame.time.get_ticks()  # 记录游戏启动的绝对时间
+        self.ai_game.last_alien_time = pygame.time.get_ticks()  # 重置外星人生成时间戳
+        self.ai_game.last_alien_bomb_time = pygame.time.get_ticks()  # 重置炸弹生成时间戳
+        self.ai_game.speed_ring_count = 0  # 重置速度项链计数器
         self.ai_game.game_active = True

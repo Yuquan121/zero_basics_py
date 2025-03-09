@@ -1,6 +1,6 @@
 import pygame
-from setting import Settings
 
+from setting import Settings
 
 class Ship:
     """管理飞船行为和属性的类。
